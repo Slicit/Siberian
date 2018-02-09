@@ -1,14 +1,13 @@
 <?php
 /**
  *
- * Schema definition for 'wordpress'
+ * Schema definition for 'wordpress2'
  *
- * Last update: 2016-04-28
+ * Last update: 2018-02-09
  *
  */
-/*
 $schemas = (!isset($schemas)) ? [] : $schemas;
-$schemas['wordpress2'] = array(
+$schemas['wordpress2'] = [
     'wordpress2_id' => [
         'type' => 'int(11) unsigned',
         'auto_increment' => true,
@@ -19,7 +18,7 @@ $schemas['wordpress2'] = array(
         'foreign_key' => [
             'table' => 'application_option_value',
             'column' => 'value_id',
-            'name' => 'wordpress_ibfk_1',
+            'name' => 'wordpress2_ibfk_1',
             'on_update' => 'CASCADE',
             'on_delete' => 'CASCADE',
         ],
@@ -35,11 +34,24 @@ $schemas['wordpress2'] = array(
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
     ],
+    'login' => [
+        'type' => 'varchar(255)',
+        'charset' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+    ],
+    'password' => [
+        'type' => 'varchar(255)',
+        'charset' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+    ],
+    'group_queries' => [
+        'type' => 'tinyint(1)',
+        'default' => '1',
+    ],
     'created_at' => [
         'type' => 'datetime',
     ],
     'updated_at' => [
         'type' => 'datetime',
     ],
-);
-*/
+];

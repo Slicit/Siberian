@@ -6,6 +6,7 @@
  * Last update: 2016-04-28
  *
  */
+/*
 $schemas = (!isset($schemas)) ? [] : $schemas;
 $schemas['wordpress2'] = array(
     'wordpress2_id' => [
@@ -41,3 +42,4 @@ $schemas['wordpress2'] = array(
         'type' => 'datetime',
     ],
 );
+*/

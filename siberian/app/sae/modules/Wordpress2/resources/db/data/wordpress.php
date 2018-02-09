@@ -1,4 +1,5 @@
 <?php
+/**
 $name = "Wordpress";
 
 # Icons
@@ -38,3 +39,4 @@ $icons = array(
 );
 
 Siberian_Feature::installIcons("{$name}-flat", $icons);
+ * */

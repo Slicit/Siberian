@@ -6,6 +6,7 @@
  * Last update: 2016-04-28
  *
  */
+/**
 $schemas = (!isset($schemas)) ? array() : $schemas;
 $schemas['wordpress_category'] = array(
     'category_id' => array(
@@ -37,3 +38,4 @@ $schemas['wordpress_category'] = array(
         'default' => '0',
     ),
 );
+ * */

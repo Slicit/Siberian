@@ -13,20 +13,16 @@ class Wordpress2_ApplicationController extends Application_Controller_Default {
 
         echo '<pre>';
         try {
-            $client = new WpClient(new GuzzleAdapter(new GuzzleHttp\Client()), 'https://doc.siberiancms.com');
-            //$client->setCredentials(new WpBasicAuth('a.crepin', 'NHGgtt51'));
+            $wordpressApi = (new Wordpress2_Model_WordpressApi())
+                ->init('https://doc.siberiancms.com', 'a.crepin', 'NHGgtt51');
 
-            $posts = $client->posts()->get(null, [
-                'categories' => [21, 39]
-            ]);
-            $categories = $client->categories()->get();
-
+            $categories = $wordpressApi->getCategories();
             foreach ($categories as $category) {
-                echo sprintf('<b>%s</b> %s <br />', $category['name'], $category['link']);
-                echo sprintf('-- %s <br />', implode(', ', array_keys($category)));
-            }
-            foreach ($posts as $post) {
-                print_r($post);
+                $posts = $wordpressApi->getPosts($category['id'], 1);
+                foreach ($posts as $post) {
+                    echo '<b>' .$category['name'] . '</b> > ' . $post['title']['rendered'];
+                    echo PHP_EOL;
+                }
             }
         } catch (Exception $e) {
             print_r($e->getMessage());

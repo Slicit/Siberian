@@ -48,6 +48,10 @@ $schemas['wordpress2'] = [
         'type' => 'tinyint(1)',
         'default' => '1',
     ],
+    'card_design' => [
+        'type' => 'tinyint(1)',
+        'default' => '0',
+    ],
     'created_at' => [
         'type' => 'datetime',
     ],

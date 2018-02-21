@@ -9,6 +9,42 @@ use Vnn\WpApiClient\WpClient;
  */
 class Wordpress2_ApplicationController extends Application_Controller_Default {
 
+    /**
+     * Edit the default wordpress settings, url, login, password
+     */
+    public function editwordpressAction() {
+        $request = $this->getRequest();
+        $params = $request->getPost();
+
+        $form = new Wordpress2_Form_Wordpress();
+        if($form->isValid($params)) {
+            // Do whatever you need when form is valid!
+            $wordpress = new Wordpress2_Model_Wordpress();
+            $wordpress = $wordpress
+                ->find($params['wordpress2_id']);
+            $wordpress->setData($params);
+            $wordpress->save();
+
+            /** Update touch date, then never expires (until next touch) */
+            $this->getCurrentOptionValue()
+                ->touch()
+                ->expires(-1);
+
+            $payload = [
+                'success' => true,
+                'message' => __('Success.'),
+            ];
+        } else {
+            $payload = [
+                'error' => true,
+                'message' => $form->getTextErrors(),
+                'errors' => $form->getTextErrors(true)
+            ];
+        }
+
+        $this->_sendJson($payload);
+    }
+
     public function testAction () {
 
         echo '<pre>';

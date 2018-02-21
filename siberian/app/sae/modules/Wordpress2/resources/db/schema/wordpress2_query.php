@@ -13,6 +13,22 @@ $schemas['wordpress2_query'] = [
         'auto_increment' => true,
         'primary' => true,
     ],
+    'wordpress2_id' => [
+        'type' => 'int(11) unsigned',
+        'foreign_key' => [
+            'table' => 'wordpress2',
+            'column' => 'value_id',
+            'name' => 'wordpress2_id_query',
+            'on_update' => 'CASCADE',
+            'on_delete' => 'CASCADE',
+        ],
+        'index' => [
+            'key_name' => 'KEY_QUERY_ID',
+            'index_type' => 'BTREE',
+            'is_null' => false,
+            'is_unique' => false,
+        ],
+    ],
     'title' => [
         'type' => 'varchar(255)',
         'charset' => 'utf8',
